@@ -35,9 +35,12 @@ public class fifth {
         {
             System.out.println("这么快就猜出来了,很聪明么!");
         }
-        else if(counter>=7)
+        else if(counter>=7 && counter<20)
         {
             System.out.println("猜了半天才才出来,小同志,尚需努力啊!");
+        }
+        else {
+            System.out.println("谢谢您的参与!");
         }
     }
 }

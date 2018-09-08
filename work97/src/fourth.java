@@ -16,8 +16,11 @@ public class fourth {
             while(tx<0)
             {
                 System.out.println("抱歉,分数录入错误,请重新进行录入!");
+                i=i-1;
+                tx=0;
                 break;
             }
+
             sum=sum+tx;
         }
         System.out.println("学生姓名:"+name+",五科平均分:"+(sum/5));
