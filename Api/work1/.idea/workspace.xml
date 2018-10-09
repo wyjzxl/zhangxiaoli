@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4a50f4e9-b3eb-4765-a5cf-8b6d0fe62b0b" name="Default Changelist" comment="" />
+    <list default="true" id="286c776b-742d-4cea-bb73-2dfb1775afea" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -10,34 +10,34 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FUSProjectUsageTrigger">
-    <session id="-1305447460">
+    <session id="-298128845">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="3" />
+          <entry key="project.closed" value="4" />
           <entry key="project.open.time.0" value="1" />
-          <entry key="project.open.time.1" value="1" />
-          <entry key="project.open.time.14" value="1" />
-          <entry key="project.opened" value="3" />
+          <entry key="project.open.time.15" value="2" />
+          <entry key="project.open.time.4" value="1" />
+          <entry key="project.opened" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="8" />
+          <entry key="java" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="8" />
+          <entry key="JAVA" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="363" />
+          <entry key="java" value="1110" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="363" />
+          <entry key="JAVA" value="1110" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages" />
@@ -46,31 +46,13 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/student/Opera.java">
+        <entry file="file://$PROJECT_DIR$/src/com/ArrayList/Tes.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1178">
-              <caret line="110" column="40" selection-start-line="110" selection-start-column="40" selection-end-line="110" selection-end-column="40" />
+            <state relative-caret-position="211">
+              <caret line="25" column="35" selection-start-line="25" selection-start-column="35" selection-end-line="25" selection-end-column="35" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/student/Test.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
-              <caret line="7" column="1" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/student/Student.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="9" selection-start-line="9" selection-end-line="9" />
             </state>
           </provider>
         </entry>
@@ -87,23 +69,16 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/Test.java" />
-        <option value="$PROJECT_DIR$/src/Student.java" />
-        <option value="$PROJECT_DIR$/src/Student/Test.java" />
-        <option value="$PROJECT_DIR$/src/Opera.java" />
-        <option value="$PROJECT_DIR$/src/Student/Opera.java" />
-        <option value="$PROJECT_DIR$/src/Student1/Opera.java" />
-        <option value="$PROJECT_DIR$/src/Student1/Student.java" />
-        <option value="$PROJECT_DIR$/src/Student1/Test.java" />
-        <option value="$PROJECT_DIR$/src/student/Student.java" />
-        <option value="$PROJECT_DIR$/src/student/Opera.java" />
-        <option value="$PROJECT_DIR$/src/student/Test.java" />
+        <option value="$PROJECT_DIR$/src/com/StudentSystem/Student.java" />
+        <option value="$PROJECT_DIR$/src/com/ArrayList/OOP.java" />
+        <option value="$PROJECT_DIR$/src/com/StudentSystem/Test.java" />
+        <option value="$PROJECT_DIR$/src/com/ArrayList/Tes.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="259" />
-    <option name="y" value="184" />
+    <option name="x" value="164" />
+    <option name="y" value="64" />
     <option name="width" value="1346" />
     <option name="height" value="680" />
   </component>
@@ -112,36 +87,42 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="Student" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Student" type="462c0819:PsiDirectoryNode" />
+              <item name="work1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="work1" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="Student" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Student" type="462c0819:PsiDirectoryNode" />
+              <item name="work1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="work1" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="Student" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Student" type="462c0819:PsiDirectoryNode" />
+              <item name="work1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="work1" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="student" type="462c0819:PsiDirectoryNode" />
+              <item name="ArrayList" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="work1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="work1" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="StudentSystem" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="AndroidView" />
       <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1538998820112" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1539045008627" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/chapter01" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -155,13 +136,13 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
-    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="student.Test" />
-      <module name="StudentOOp" />
+  <component name="RunManager" selected="Application.Tes">
+    <configuration name="Tes" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.ArrayList.Tes" />
+      <module name="work1" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="student.*" />
+          <option name="PATTERN" value="com.ArrayList.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -169,8 +150,26 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.StudentSystem.Test" />
+      <module name="work1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.StudentSystem.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.Test" />
+      <item itemvalue="Application.Tes" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Tes" />
         <item itemvalue="Application.Test" />
       </list>
     </recent_temporary>
@@ -180,19 +179,19 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="4a50f4e9-b3eb-4765-a5cf-8b6d0fe62b0b" name="Default Changelist" comment="" />
-      <created>1538996609525</created>
+      <changelist id="286c776b-742d-4cea-bb73-2dfb1775afea" name="Default Changelist" comment="" />
+      <created>1538998974096</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1538996609525</updated>
+      <updated>1538998974096</updated>
     </task>
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="259" y="184" width="1346" height="680" extended-state="0" />
+    <frame x="164" y="64" width="1346" height="680" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3771384" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25972006" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -201,7 +200,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.514652" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32967034" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -224,32 +223,19 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Student1/Opera.java" />
-    <entry file="file://$PROJECT_DIR$/src/Student1/Student.java" />
-    <entry file="file://$PROJECT_DIR$/src/Student1/Test.java" />
-    <entry file="file://$USER_HOME$/Desktop/chapter01/src/studnentMap/Oprea.java">
+    <entry file="file://$PROJECT_DIR$/src/com/StudentSystem/Student.java" />
+    <entry file="file://$PROJECT_DIR$/src/com/ArrayList/OOP.java" />
+    <entry file="file://$PROJECT_DIR$/src/com/StudentSystem/Test.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1256" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/student/Test.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="7" column="1" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
+        <state relative-caret-position="228">
+          <caret line="12" column="38" lean-forward="true" selection-start-line="12" selection-start-column="38" selection-end-line="12" selection-end-column="38" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/student/Student.java">
+    <entry file="file://$PROJECT_DIR$/src/com/ArrayList/Tes.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/student/Opera.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1178">
-          <caret line="110" column="40" selection-start-line="110" selection-start-column="40" selection-end-line="110" selection-end-column="40" />
+        <state relative-caret-position="211">
+          <caret line="25" column="35" selection-start-line="25" selection-start-column="35" selection-end-line="25" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
