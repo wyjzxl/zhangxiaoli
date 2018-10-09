@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="EmployeeManager:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/EmployeeManager_jar</output-path>
+    <root id="archive" name="EmployeeManager.jar">
+      <element id="module-output" name="EmployeeManager" />
+    </root>
+  </artifact>
+</component>
