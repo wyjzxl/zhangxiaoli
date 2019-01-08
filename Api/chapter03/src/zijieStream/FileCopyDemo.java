@@ -1,9 +1,6 @@
 package zijieStream;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 
 /**
  * Created by Administrator on 2018/10/11.
@@ -15,8 +12,8 @@ public class FileCopyDemo {
         FileOutputStream fos=null;
         try {
             //创建流对象
-            fis=new FileInputStream("D:\\mydoc\\test.txt");
-            fos=new FileOutputStream("D:\\mydoc\\doc.txt",true);
+            fis=new FileInputStream("D:\\hehe\\test.txt");
+            fos=new FileOutputStream("D:\\hehe\\doc.txt",true);
             //读内容,读到末尾返回-1
               int data=fis.read();
             while(data!=-1){
@@ -31,6 +28,7 @@ public class FileCopyDemo {
             if(fis!=null){
                 try {
                     fis.close();
+                    fos.close();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

@@ -13,10 +13,10 @@ public class FileOutputStreamDemo {
         FileOutputStream fos=null;
         try {
             //true,不覆盖，向文件追加内容
-           fos=new FileOutputStream("D:\\mydoc\\doc.txt",true);
+           fos=new FileOutputStream("D:\\hehe\\doc.txt",true);
             String str="afasfsfgsd";
-//            fos.write(str.getBytes());
-            fos.write(str.getBytes(),2,3);
+            fos.write(str.getBytes());
+            /*fos.write(str.getBytes(),2,3);*/
             fos.flush();//刷新
         } catch (FileNotFoundException e) {
             e.printStackTrace();

@@ -12,7 +12,7 @@ public class FileReaderDemo {
     public static void main(String[] args) {
         FileReader fr=null;
         try {
-             fr=new FileReader("D:\\mydoc\\doc.txt");
+             fr=new FileReader("D:\\hehe\\doc.txt");
             //获取本地编码格式
             System.out.println(System.getProperty("file.encoding"));
 //             int data=fr.read();

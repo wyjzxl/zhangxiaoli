@@ -13,7 +13,7 @@ public class FileInputStreamDemo {
         FileInputStream fis=null;
         try {
             //创建流对象
-             fis=new FileInputStream("D:\\mydoc\\test.txt");
+             fis=new FileInputStream("D:\\hehe\\test.txt");
             //读内容,读到末尾返回-1
             //  int data=fis.read();
 //            while(data!=-1){
