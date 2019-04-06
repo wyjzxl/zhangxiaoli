@@ -1,0 +1,21 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.itrip.mapper.AreaMapper">
+    <select id="selectbyparentId" parameterType="integer" resultType="cn.itrip.beans.pojo.AreaDic">
+        select id,name from itrip_area_dic
+        <where>
+            <if test="parentId != null and parentId > 0">
+                parent=#{parentId}
+            </if>
+        </where>
+    </select>
+    <select id="queryhotcity" parameterType="integer" resultType="cn.itrip.beans.pojo.AreaDic">
+        select id,name from itrip_area_dic
+        <where>
+            <if test="parentId != null and parentId > 0">
+                isChina=#{parentId} and isHot=1
+            </if>
+        </where>
+    </select>
+</mapper>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.itrip.mapper.HotelOrderMapper" >
+  <resultMap id="BaseResultMap" type="cn.itrip.beans.pojo.HotelOrderExt" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="userId" property="userId" jdbcType="BIGINT" />
+    <result column="orderType" property="orderType" jdbcType="INTEGER" />
+    <result column="orderNo" property="orderNo" jdbcType="VARCHAR" />
+    <result column="tradeNo" property="tradeNo" jdbcType="VARCHAR" />
+    <result column="hotelId" property="hotelId" jdbcType="BIGINT" />
+    <result column="hotelName" property="hotelName" jdbcType="VARCHAR" />
+    <result column="roomId" property="roomId" jdbcType="BIGINT" />
+    <result column="count" property="count" jdbcType="INTEGER" />
+    <result column="bookingDays" property="bookingDays" jdbcType="INTEGER" />
+    <result column="checkInDate" property="checkInDate" jdbcType="TIMESTAMP" />
+    <result column="checkOutDate" property="checkOutDate" jdbcType="TIMESTAMP" />
+    <result column="orderStatus" property="orderStatus" jdbcType="INTEGER" />
+    <result column="payAmount" property="payAmount" jdbcType="DECIMAL" />
+    <result column="payType" property="payType" jdbcType="INTEGER" />
+    <result column="noticePhone" property="noticePhone" jdbcType="VARCHAR" />
+    <result column="noticeEmail" property="noticeEmail" jdbcType="VARCHAR" />
+    <result column="isNeedInvoice" property="isNeedInvoice" jdbcType="INTEGER" />
+    <result column="invoiceType" property="invoiceType" jdbcType="INTEGER" />
+    <result column="invoiceHead" property="invoiceHead" jdbcType="VARCHAR" />
+    <result column="linkUserName" property="linkUserName" jdbcType="VARCHAR" />
+    <result column="bookType" property="bookType" jdbcType="INTEGER" />
+    <result column="creationDate" property="creationDate" jdbcType="TIMESTAMP" />
+    <result column="createdBy" property="createdBy" jdbcType="BIGINT" />
+    <result column="modifyDate" property="modifyDate" jdbcType="TIMESTAMP" />
+    <result column="modifiedBy" property="modifiedBy" jdbcType="BIGINT" />
+  </resultMap>
+  <select id="selectByOrderNo" resultType="cn.itrip.beans.pojo.HotelOrderExt" parameterType="java.lang.String">
+      SELECT
+        `id`,  `orderNo`,  `payAmount`,  `hotelName`,  `checkInDate`,
+        `checkOutDate`,  `roomId`,  `hotelId`,  `count`,  `bookingDays`,
+        `orderStatus`,  `bookType`,  `createdBy`,  `creationDate`,
+        `invoiceHead`,  `invoiceType`,  `isNeedInvoice`,  `linkUserName`,
+        `modifiedBy`,  `modifyDate`,  `noticeEmail`,  `noticePhone`,
+        `orderType`,  `payType`,  `specialRequirement`,  `tradeNo`,  `userId`
+      FROM `itrip_hotel_order`
+      WHERE `orderNo`=#{orderNo}
+  </select>
+    <update id="updateOrderStatusCommented">
+        UPDATE
+          `itripdb`.`itrip_hotel_order`
+        SET
+          `orderStatus` = 4
+        WHERE `id` = #{orderId} AND  `orderStatus` =3
+  </update>
+  <select id="selectPersonalOrderRoomInfo" resultType="cn.itrip.beans.vo.OrderRoomInfo">
+    SELECT
+        h.`address`,
+        o.`bookingDays`,
+        o.`checkInDate`,
+        DAYOFWEEK(o.`checkInDate`) `checkInWeek`,
+        o.`checkOutDate`,
+        DAYOFWEEK(o.`checkOutDate`) `checkOutWeek`,
+        o.`count`,
+        o.`hotelId`,
+        h.`hotelLevel`,
+        o.`hotelName`,
+        o.`id`,
+        r.`isHavingBreakfast`,
+        o.`linkUserName`,
+        o.`payAmount`,
+        r.`roomBedTypeId`,
+        (SELECT `name` FROM `itrip_label_dic` WHERE id= r.`roomBedTypeId`) `roomBedTypeName`,
+        o.`roomId`,
+        o.`payType` `roomPayType`,
+        r.`roomTitle`,
+        o.`specialRequirement`
+    FROM `itrip_hotel_order` o
+    LEFT JOIN `itrip_hotel` h ON h.id=o.hotelId
+    LEFT JOIN `itrip_hotel_room` r ON r.id=o.roomId AND r.`hotelId`=h.`id`
+    WHERE o.id=#{orderId}
+  </select>
+  <update id="updateOrder" parameterType="cn.itrip.beans.pojo.HotelOrderExt">
+        update
+          `itripdb`.`itrip_hotel_order`
+        set
+          `tradeNo` = #{tradeNo},
+          `orderStatus` = #{orderStatus},
+          `payType` = #{payType}
+        where `orderNo` = #{orderNo}
+    </update>
+</mapper>

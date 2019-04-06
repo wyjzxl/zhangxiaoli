@@ -1,0 +1,11 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.itrip.mapper.HotelRoomMapper">
+    <select id="getRoomPrice" parameterType="Long" resultType="double">
+       SELECT roomPrice FROM itrip_hotel_room WHERE id = #{roomId}
+   </select>
+    <select id="getRoomId" resultType="cn.itrip.beans.pojo.ItripHotelRoom">
+        select * from itrip_hotel_room where id=#{roomId}
+    </select>
+</mapper>

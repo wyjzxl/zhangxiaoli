@@ -1,24 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6f921f0d-1d25-4785-aa1a-4075c7027813" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../exam/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../exam/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../exam/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../exam/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../exam/common/beans/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../exam/common/beans/src/main/java/cn/wyj/common/pojo/New.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../exam/common/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../exam/common/rpcservice/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../exam/common/rpcservice/src/main/java/cn/wyj/rpcservice/RpcUserService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../exam/consumer/src/main/java/com/example/consumer/cn/wyj/controller/UserController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../exam/consumer/src/main/resources/logback-spring.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../exam/consumer/src/main/resources/static/addNew.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../exam/consumer/src/main/resources/static/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../exam/consumer/src/main/resources/static/js/jquery-1.12.4.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../exam/provider/src/main/java/com/example/provider/cn/wyj/provider/mapper/UserMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../exam/provider/src/main/java/com/example/provider/cn/wyj/provider/service/RpcUserServiceImpl.java" afterDir="false" />
-    </list>
+    <list default="true" id="6f921f0d-1d25-4785-aa1a-4075c7027813" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -38,11 +21,12 @@
       <usages-collector id="statistics.lifecycle.project">
         <counts>
           <entry key="project.closed" value="6" />
+          <entry key="project.open.time.28" value="1" />
           <entry key="project.open.time.31" value="2" />
           <entry key="project.open.time.32" value="2" />
           <entry key="project.open.time.33" value="1" />
           <entry key="project.open.time.5" value="1" />
-          <entry key="project.opened" value="6" />
+          <entry key="project.opened" value="7" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -68,7 +52,7 @@
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -108,10 +92,11 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="width" value="977" />
-    <option name="height" value="1038" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="935" />
+    <option name="y" value="155" />
+    <option name="width" value="980" />
+    <option name="height" value="1040" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
@@ -121,7 +106,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -159,13 +144,14 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554261645846" />
+    <property name="last_opened_file_path" value="D:/itrip" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
@@ -250,16 +236,17 @@
       <workItem from="1554081526616" duration="3797000" />
       <workItem from="1554165043902" duration="1828000" />
       <workItem from="1554252332982" duration="5003000" />
+      <workItem from="1554553752628" duration="519000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36908000" />
+    <option name="totallyTimeSpent" value="37427000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-6" y="0" width="781" height="830" extended-state="0" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.57399726" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.57372653" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -397,9 +384,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="429">
           <caret line="30" column="19" selection-start-line="30" selection-start-column="19" selection-end-line="30" selection-end-column="19" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -407,12 +391,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="567">
           <caret line="27" selection-start-line="27" selection-end-line="27" />
-          <folding>
-            <element signature="e#360#519#0" expanded="true" />
-            <element signature="e#518#519#0" expanded="true" />
-            <element signature="e#630#804#0" expanded="true" />
-            <element signature="e#803#804#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>

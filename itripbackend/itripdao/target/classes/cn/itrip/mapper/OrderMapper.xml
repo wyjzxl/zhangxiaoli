@@ -1,0 +1,231 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.itrip.mapper.OrderMapper">
+    <insert id="insertOrder" parameterType="cn.itrip.beans.pojo.Order">
+        <selectKey keyProperty="id" order="AFTER" resultType="long">
+            select LAST_INSERT_ID()
+        </selectKey>
+        insert into `itripdb`.`itrip_hotel_order` (
+        `userId` ,
+        `orderType`,
+        `orderNo`,
+        `tradeNo`,
+        `hotelId`,
+        `hotelName`,
+        `roomId`,
+        `count`,
+        `bookingDays`,
+        `checkInDate`,
+        `checkOutDate`,
+        `orderStatus`,
+        `payAmount`,
+        `payType`,
+        `noticePhone`,
+        `noticeEmail`,
+        `specialRequirement`,
+        `isNeedInvoice`,
+        `invoiceType`,
+        `invoiceHead`,
+        `linkUserName`,
+        `bookType`,
+        `creationDate`,
+        `createdBy`,
+        `modifyDate`,
+        `modifiedBy`
+        )
+        values
+        (
+            #{userId},#{orderType},#{orderNo},#{tradeNo},#{hotelId},#{hotelName},#{roomId},#{count},
+            #{bookingDays},#{checkInDate},#{checkOutDate},#{orderStatus},#{payAmount},#{payType},#{noticePhone},
+            #{noticeEmail},#{specialRequirement},#{isNeedInvoice},#{invoiceType},#{invoiceHead},#{linkUserName},
+            #{bookType},#{creationDate},#{createdBy},#{modifyDate},#{modifiedBy}
+        )
+
+    </insert>
+    <select id="selectHotelPrice" parameterType="cn.itrip.beans.pojo.Order" resultType="double">
+        select roomPrice from itrip_hotel_room where hotelId=#{hotelId} and id=#{roomId}
+    </select>
+
+    <update id="updateScore">
+        UPDATE itrip_hotel_temp_store SET store=store-#{count} WHERE recordDate=#{checkInDate} and roomId=#{roomId} and hotelId=#{hotelId}
+    </update>
+    <insert id="insertOrderLinkUser" parameterType="cn.itrip.beans.pojo.OrderLinkUser" >
+        insert into `itripdb`.`itrip_order_link_user` (
+            `id`,
+            `orderId`,
+            `linkUserId`,
+            `linkUserName`,
+            `creationDate`,
+            `createdBy`,
+            `modifyDate`,
+            `modifiedBy`
+          )
+        values
+          (
+            #{id},
+            #{orderId},
+            #{linkUserId},
+            #{linkUserName},
+            #{creationDate},
+            #{createdBy},
+            #{modifyDate},
+            #{modifiedBy}
+          )
+    </insert>
+    <select id="getScore" resultType="integer">
+        SELECT MIN(store) FROM itrip_hotel_temp_store WHERE roomId=#{roomId} AND recordDate between #{checkInDate} and #{checkOutDate}
+    </select>
+    <update id="updateStatus">
+        update itrip_hotel_order set orderStatus=#{orderStatus},tradeNo=#{tradeNo} where orderNo=#{orderNo}
+    </update>
+    <select id="getOrderRoomId" resultType="cn.itrip.beans.pojo.GetOrderRoomInfoVO">
+        select *,payType as roomPayType,checkInDate as checkInDateTemp,checkOutDate as checkOutDateTemp from itrip_hotel_order where id=#{id}
+    </select>
+    <select id="getCount" resultType="integer">
+        select sum(iho.count)
+        from itrip_hotel_order iho
+        where roomId=#{roomId}
+          and to_days(checkInDate)
+          between #{checkInDate} and #{checkOutDate}
+          and orderStatus=0
+    </select>
+    <select id="roomInfo" resultType="cn.itrip.beans.vo.PerOrderInfoVO">
+        select *,
+               (select hotelName from itrip_hotel where id=ihr.hotelId) AS hotelName FROM itrip_hotel_room ihr WHERE ihr.id=#{roomId}
+    </select>
+    <select id="selectRoom" resultType="cn.itrip.beans.pojo.ItripHotelRoom">
+       select * FROM itrip_hotel_room ihr WHERE ihr.id=#{roomId}
+    </select>
+    <select id="queryOrderById" resultType="cn.itrip.beans.vo.QueryOrderByIdVO">
+        select *
+        from itrip_hotel_order where id=#{id};
+    </select>
+    <select id="getOrderId" resultType="cn.itrip.beans.vo.PersonalOrderInfoVO">
+        select *,payType as roomPayType from itrip_hotel_order where id=#{id}
+    </select>
+    <select id="getBedName" resultType="cn.itrip.beans.pojo.ItripLabelDic">
+        SELECT ld.`name` FROM itrip_label_dic ld WHERE ld.id=#{roomBedTypeId}
+    </select>
+    <select id="getRoomInfo" resultType="cn.itrip.beans.pojo.ItripHotelRoom">
+        SELECT isHavingBreakfast,roomBedTypeId,roomTitle FROM itrip_hotel_room hr WHERE hr.`id`=#{roomId}
+    </select>
+    <select id="getAddress" resultType="cn.itrip.beans.pojo.ItripHotel">
+        SELECT address,hotelLevel FROM itrip_hotel ih WHERE ih.`id`=#{hotelId}
+    </select>
+    <select id="getUserInfo" parameterType="integer" resultType="cn.itrip.beans.pojo.LinkUserInfo">
+          select id as linkUserId,linkUserName  from itrip_order_link_user where orderId=#{id}
+    </select>
+    <select id="getInfo" parameterType="integer" resultType="cn.itrip.beans.pojo.OrderE">
+                SELECT
+                  `id`,
+                  `userId`,
+                  `orderType`,
+                  `orderNo`,
+                  `tradeNo`,
+                  `hotelId`,
+                  `hotelName`,
+                  `roomId`,
+                  `count`,
+                  `bookingDays`,
+                  DATE_FORMAT(`checkInDate`,"%Y-%m-%d") as checkInDate ,
+                  DATE_FORMAT(`checkOutDate`,"%Y-%m-%d") as checkOutDate,
+                  `orderStatus`,
+                  `payAmount`,
+                  `payType`,
+                  `noticePhone`,
+                  `noticeEmail`,
+                  `specialRequirement`,
+                  `isNeedInvoice`,
+                  `invoiceType`,
+                  `invoiceHead`,
+                  `linkUserName`,
+                  `bookType`,
+                  `creationDate`,
+                  `createdBy`,
+                  `modifyDate`,
+                  `modifiedBy`
+                FROM
+                  `itripdb`.`itrip_hotel_order`
+                where id=#{id}
+
+    </select>
+    <select id="getPersonalOrder" parameterType="integer" resultType="cn.itrip.beans.pojo.PersonalOrderRoomInfo">
+
+
+select bookType,DATE_FORMAT(iho.creationDate,"%Y-%m-%d") as creationDate,iho.id,noticePhone,orderNo,orderStatus,payAmount,ihr.payType as payType,iho.payType as roomPayType,ihr.roomBedTypeId as processNode  from itrip_hotel_order iho left join itrip_hotel_room ihr on iho.roomId=ihr.id where  iho.id=#{id}
+
+    </select>
+    <select id="selectOrderIdByOrderNo" parameterType="String" resultType="Long">
+        select id from itrip_hotel_order where orderNo = #{orderNo}
+    </select>
+    <select id="getOrderNo" resultType="cn.itrip.beans.pojo.ItripHotelOrder">
+        select * from itrip_hotel_order where orderNo=#{orderNo}
+    </select>
+    <select id="getPreStore" parameterType="cn.itrip.beans.vo.PerOrderInfoVO" statementType="CALLABLE" resultType="integer">
+        CALL pre_flush_store(#{checkInDate},#{checkOutDate},#{roomId},#{hotelId})
+    </select>
+    <insert id="addOrder">
+        INSERT INTO itrip_hotel_order
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.id != null"> id, </if>
+            <if test="pojo.userId != null"> userId, </if>
+            <if test="pojo.orderType != null"> orderType, </if>
+            <if test="pojo.orderNo != null"> orderNo, </if>
+            <if test="pojo.tradeNo != null"> tradeNo, </if>
+            <if test="pojo.hotelId != null"> hotelId, </if>
+            <if test="pojo.hotelName != null"> hotelName, </if>
+            <if test="pojo.roomId != null"> roomId, </if>
+            <if test="pojo.count != null"> `count`, </if>
+            <if test="pojo.bookingDays != null"> bookingDays, </if>
+            <if test="pojo.checkInDate != null"> checkInDate, </if>
+            <if test="pojo.checkOutDate != null"> checkOutDate, </if>
+            <if test="pojo.orderStatus != null"> orderStatus, </if>
+            <if test="pojo.payAmount != null"> payAmount, </if>
+            <if test="pojo.payType != null"> payType, </if>
+            <if test="pojo.noticePhone != null"> noticePhone, </if>
+            <if test="pojo.noticeEmail != null"> noticeEmail, </if>
+            <if test="pojo.specialRequirement != null"> specialRequirement, </if>
+            <if test="pojo.isNeedInvoice != null"> isNeedInvoice, </if>
+            <if test="pojo.invoiceType != null"> invoiceType, </if>
+            <if test="pojo.invoiceHead != null"> invoiceHead, </if>
+            <if test="pojo.linkUserName != null"> linkUserName, </if>
+            <if test="pojo.bookType != null"> bookType, </if>
+            <if test="pojo.creationDate != null"> creationDate, </if>
+            <if test="pojo.createdBy != null"> createdBy, </if>
+            <if test="pojo.modifyDate != null"> modifyDate, </if>
+            <if test="pojo.modifiedBy != null"> modifiedBy, </if>
+        </trim>
+    VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.id != null"> #{pojo.id}, </if>
+            <if test="pojo.userId != null"> #{pojo.userId}, </if>
+            <if test="pojo.orderType != null"> #{pojo.orderType}, </if>
+            <if test="pojo.orderNo != null"> #{pojo.orderNo}, </if>
+            <if test="pojo.tradeNo != null"> #{pojo.tradeNo}, </if>
+            <if test="pojo.hotelId != null"> #{pojo.hotelId}, </if>
+            <if test="pojo.hotelName != null"> #{pojo.hotelName}, </if>
+            <if test="pojo.roomId != null"> #{pojo.roomId}, </if>
+            <if test="pojo.count != null"> #{pojo.count}, </if>
+            <if test="pojo.bookingDays != null"> #{pojo.bookingDays}, </if>
+            <if test="pojo.checkInDate != null"> #{pojo.checkInDate}, </if>
+            <if test="pojo.checkOutDate != null"> #{pojo.checkOutDate}, </if>
+            <if test="pojo.orderStatus != null"> #{pojo.orderStatus}, </if>
+            <if test="pojo.payAmount != null"> #{pojo.payAmount}, </if>
+            <if test="pojo.payType != null"> #{pojo.payType}, </if>
+            <if test="pojo.noticePhone != null"> #{pojo.noticePhone}, </if>
+            <if test="pojo.noticeEmail != null"> #{pojo.noticeEmail}, </if>
+            <if test="pojo.specialRequirement != null"> #{pojo.specialRequirement}, </if>
+            <if test="pojo.isNeedInvoice != null"> #{pojo.isNeedInvoice}, </if>
+            <if test="pojo.invoiceType != null"> #{pojo.invoiceType}, </if>
+            <if test="pojo.invoiceHead != null"> #{pojo.invoiceHead}, </if>
+            <if test="pojo.linkUserName != null"> #{pojo.linkUserName}, </if>
+            <if test="pojo.bookType != null"> #{pojo.bookType}, </if>
+            <if test="pojo.creationDate != null"> #{pojo.creationDate}, </if>
+            <if test="pojo.createdBy != null"> #{pojo.createdBy}, </if>
+            <if test="pojo.modifyDate != null"> #{pojo.modifyDate}, </if>
+            <if test="pojo.modifiedBy != null"> #{pojo.modifiedBy}, </if>
+        </trim>
+    </insert>
+
+</mapper>

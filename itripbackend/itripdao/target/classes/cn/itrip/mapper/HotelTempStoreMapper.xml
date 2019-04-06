@@ -1,0 +1,62 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.itrip.mapper.HotelTempStoreMapper">
+    <select id="selectHotelName" parameterType="integer" resultType="string">
+            select hotelName from itrip_hotel where id=#{hotelId}
+    </select>
+    <select id="selectPrice" parameterType="cn.itrip.beans.pojo.HotelOrder" resultType="double">
+            select roomPrice from itrip_hotel_room where hotelId=#{hotelId} and id=#{roomId}
+    </select>
+    <select id="selectRecord" parameterType="cn.itrip.beans.pojo.HotelOrder" resultType="int">
+        SELECT
+	      count(1)
+        FROM
+	      itrip_hotel_temp_store
+        WHERE
+	      hotelId = #{hotelId}
+	    AND roomId = #{roomId}
+	    AND (recordDate BETWEEN DATE_FORMAT(#{checkInDate}, "%Y-%m-%d")
+	    AND DATE_FORMAT( #{checkOutDate}, "%Y-%m-%d"))
+    </select>
+    <select id="selectMinScore" parameterType="cn.itrip.beans.pojo.HotelOrder" resultType="int">
+            select min(store),recordDate from itrip_hotel_temp_store
+        where  recordDate BETWEEN DATE_FORMAT(#{checkInDate}, "%Y-%m-%d")
+        AND DATE_FORMAT(#{checkOutDate}, "%Y-%m-%d") and  hotelId = #{hotelId} AND roomId = #{roomId}
+    </select>
+    <select id="selectStoreByDate" resultType="java.lang.Integer">
+      SELECT NULLIF(`store`,0) FROM `itrip_hotel_temp_store`
+      WHERE hotelId=#{hotelId}
+      AND roomId=#{roomId}
+      AND DATE_FORMAT(recordDate, '%Y-%m-%d')=DATE_FORMAT(#{tempDate},'%Y-%m-%d')
+      ORDER BY `creationDate` DESC
+      LIMIT 0,1
+  </select>
+    <update id="updateTempStoreByOrder">
+      UPDATE
+        `itripdb`.`itrip_hotel_temp_store`
+      SET
+        `store` = #{store}
+      WHERE `hotelId`=#{hotelId}
+          AND `roomId`=#{roomId}
+          AND DATE_FORMAT(recordDate, '%Y-%m-%d') = DATE_FORMAT(#{tempDate},'%Y-%m-%d')
+    </update>
+    <select id="selectNoPayOrder" parameterType="cn.itrip.beans.pojo.HotelOrder" resultType="int">
+        SELECT count(1) FROM `itrip_hotel_order` where checkInDate >= DATE_FORMAT(#{checkInDate},"%Y-%m-%d")
+        and checkOutDate &lt;= DATE_FORMAT(#{checkOutDate},"%Y-%m-%d") and hotelId= #{hotelId} and roomId= #{roomId}
+        and orderStatus=0
+    </select>
+    <update id="updateStoreWhilePreOrder" parameterType="cn.itrip.beans.pojo.OrderVo" >
+        update itrip_hotel_temp_store set store = #{store} where roomId = #{roomId} AND recordDate BETWEEN #{checkInDate} AND #{checkOutDate}
+    </update>
+    <select id="callPre_flush_store" parameterType="cn.itrip.beans.pojo.HotelOrderExt" statementType="CALLABLE" resultType="java.lang.Integer">
+      {
+        CALL  pre_flush_store(
+            #{checkInDate},
+            #{checkOutDate},
+            #{roomId},
+            #{hotelId}
+        )
+      }
+  </select>
+</mapper>

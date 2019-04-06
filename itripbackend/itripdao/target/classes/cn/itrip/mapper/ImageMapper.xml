@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.itrip.mapper.ImageMapper">
+    <select id="selectImageById" parameterType="integer" resultType="cn.itrip.beans.pojo.Image" >
+        SELECT imgUrl   ,`position` FROM itrip_image ii
+                               INNER JOIN itrip_hotel_room ihr
+                                          ON ii.targetId =  ihr.id
+        WHERE ihr.hotelId = #{hotelId} and ii.`type` = 1 and imgUrl is not null
+    </select>
+
+    <!--<select id="getimg" parameterType="Long" resultType="cn.itrip.beans.pojo.Image">
+        SELECT imgUrl,`position` FROM itrip_image ii
+                               INNER JOIN itrip_hotel_room ihr
+                                          ON ii.targetId =  ihr.id
+        WHERE ihr.hotelId = #{hotelId} and `type` = 2
+    </select>-->
+</mapper>

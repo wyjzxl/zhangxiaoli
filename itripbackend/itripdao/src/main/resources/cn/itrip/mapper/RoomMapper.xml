@@ -1,0 +1,42 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.itrip.mapper.RoomMapper">
+    <select id="queryhotelroombyhotel" parameterType="cn.itrip.beans.pojo.HotelRoom" resultType="cn.itrip.beans.vo.HotelRoomVo">
+        SELECT
+            hotelId,
+            id,
+            isBook,
+            isCancel,
+            isHavingBreakfast,
+            isTimelyResponse,
+            payType,
+            roomBedTypeId,
+            roomPrice,
+            roomTitle,
+            satisfaction
+        FROM
+            itrip_hotel_room
+        where
+             hotelId=#{hotelId}
+
+            <if test="isHavingBreakfast >0 and isHavingBreakfast !=null">
+                and isHavingBreakfast=#{isHavingBreakfast}
+            </if>
+            <if test="isTimelyResponse >0 and isTimelyResponse !=null">
+                and isTimelyResponse=#{isTimelyResponse}
+            </if>
+            <if test="isCancel >0 and isCancel !=null">
+                and isCancel=#{isCancel}
+            </if>
+            <if test="isBook >0 and isBook !=null">
+                and isBook=#{isBook}
+            </if>
+            <if test="roomBedTypeId >0 and roomBedTypeId !=null">
+                 and roomBedTypeId=#{roomBedTypeId}
+            </if>
+            <if test="payType >0 and payType !=null">
+                and payType=#{payType}
+            </if>
+    </select>
+</mapper>

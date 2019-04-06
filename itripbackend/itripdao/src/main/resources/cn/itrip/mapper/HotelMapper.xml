@@ -1,0 +1,15 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.itrip.mapper.HotelMapper">
+    <select id="queryhotelfacilities" parameterType="long" resultType="string">
+        select facilities from itrip_hotel where id=#{fId}
+    </select>
+    <select id="queryhotelpolicy" parameterType="integer" resultType="string">
+        select hotelPolicy from itrip_hotel where id=#{fId}
+    </select>
+    <select id="selectHotelById" resultType="java.util.Map">
+        SELECT `id` `hotelId` ,`hotelLevel`,`hotelName` FROM  `itrip_hotel`
+        WHERE id=#{hotelId}
+    </select>
+</mapper>

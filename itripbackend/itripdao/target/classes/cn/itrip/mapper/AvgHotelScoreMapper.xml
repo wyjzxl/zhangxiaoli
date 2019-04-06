@@ -1,0 +1,23 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.itrip.mapper.AvgHotelScoreMapper">
+
+    <select id="gethotelscore" parameterType="integer" resultType="cn.itrip.beans.pojo.AvgHotelScore">
+        SELECT AVG(facilitiesScore) AS avgFacilitiesScore,
+               AVG(hygieneScore) AS avgHygieneScore,
+               AVG(positionScore) AS avgPositionScore,
+               AVG(score) AS avgScore,
+               AVG(serviceScore) AS avgServiceScore
+        FROM itrip_comment
+        WHERE hotelId = #{id}
+    </select>
+    <select id="getcount" parameterType="integer" resultType="cn.itrip.beans.pojo.AvgHotelScore">
+        SELECT
+                (SELECT COUNT(isOk) FROM itrip_comment WHERE isok =1 AND hotelId = #{hotelId}) AS isok,
+                (SELECT COUNT(isOk) FROM itrip_comment WHERE isok =0 AND hotelId  = #{hotelId}) AS improve,
+                COUNT(isHavingImg) AS havingimg,
+                COUNT(id) AS allcomment FROM itrip_comment
+        WHERE hotelId = #{id}
+    </select>
+</mapper>

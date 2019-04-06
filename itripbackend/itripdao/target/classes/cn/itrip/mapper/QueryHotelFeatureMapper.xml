@@ -1,0 +1,8 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.itrip.mapper.QueryHotelFeatureMapper">
+    <select id="queryhotelfeature"  resultType="cn.itrip.beans.pojo.LabelDic">
+        select description,id,name,pic from itrip_label_dic where parentId=16
+    </select>
+</mapper>

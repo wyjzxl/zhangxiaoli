@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.itrip.mapper.LabelDicMapper">
+    <!--<select id="queryHotelRoomBed" parameterType="Long" resultType="cn.itrip.beans.pojo.LabelDic">
+        SELECT description,ild.id,`name`,pic FROM itrip_label_dic ild
+        where parentId = 1;
+    </select>-->
+    <select id="queryhoteldetail" parameterType="integer" resultType="cn.itrip.beans.vo.HotelDetails">
+        SELECT
+	      description,
+	      `name`
+        FROM
+	      itrip_hotel ih
+	      left JOIN itrip_hotel_feature ihf ON ih.id=ihf.hotelId
+	      left join itrip_label_dic ild  on  ild.`id` = ihf.featureId
+        WHERE
+	      ihf.hotelId =#{hotelId}
+    </select>
+	<select id="queryDetail" parameterType="integer" resultType="string">
+        SELECT
+	      details
+        FROM
+	      itrip_hotel
+        WHERE
+	       id=#{hotelId}
+    </select>
+    <select id="queryhotelroombed"  resultType="cn.itrip.beans.pojo.LabelDic">
+        select id,name,pic,description from itrip_label_dic where parentId=1
+    </select>
+    <!--<select id="gettraveltype" resultType="cn.itrip.beans.pojo.LabelDic">
+        SELECT `name`,description,id,pic FROM itrip_label_dic WHERE parentId = 107
+    </select>-->
+</mapper>

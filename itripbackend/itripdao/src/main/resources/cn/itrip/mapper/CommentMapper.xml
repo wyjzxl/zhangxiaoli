@@ -1,0 +1,92 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.itrip.mapper.CommentMapper">
+    <select id="getcommentlist" parameterType="cn.itrip.beans.pojo.Comment" resultType="cn.itrip.beans.pojo.CommentListVo">
+        SELECT
+              content,
+              ic.creationDate,
+              ih.hotelLevel,
+              DATE_FORMAT( iho.checkInDate, "%Y-%m-%d") AS checkInDate,
+              ic.id as id,
+              isHavingImg,
+              ihr.roomTitle,
+              score,
+              ilc.name AS tripModeName,
+              iu.userCode AS userCode,
+              isOk
+        FROM
+              itrip_comment ic
+        LEFT JOIN ( itrip_hotel_order iho ) ON iho.id = ic.orderId
+        LEFT JOIN ( itrip_hotel ih ) ON ic.hotelId = ih.id
+        LEFT JOIN ( itrip_hotel_room ihr ) ON iho.roomId = ihr.id
+        LEFT JOIN ( itrip_label_dic ilc ) ON ilc.id = ic.tripMode
+        LEFT JOIN ( itrip_user iu ) ON iu.id = ic.userId
+        WHERE
+            ilc.id>= 108 and ilc.id &lt;=114
+        <if test="isHavingImg!=-1 and isHavingImg!=0  ">
+            and isHavingImg = #{isHavingImg}
+        </if>
+        <if test="isOk!=null and isOk!=-1">
+            and isOk =#{isOk}
+        </if>
+        <if test="hotelId!=0 and hotelId>0 and hotelId!=null">
+            and ic.hotelId=#{hotelId}
+        </if>
+
+
+
+    </select>
+    <select id="selectImg" resultType="cn.itrip.beans.pojo.Image" parameterType="java.lang.Long">
+    SELECT `imgUrl`,`POSITION` FROM `itrip_image`
+    WHERE `targetId`=#{commentId}
+    AND `type`=2
+  </select>
+    <select id="getTravelType" resultType="cn.itrip.beans.pojo.ItripLabelDic">
+        select * from itrip_label_dic where parentId=107
+    </select>
+    <select id="selectCommentList" resultType="cn.itrip.beans.pojo.CommentListVo">
+        SELECT  c.`id`,
+        c.`content`,
+        c.`creationDate`,
+        c.`isHavingImg`,
+        c.`score`,
+        o.`checkInDate`,
+        h.`hotelLevel`,
+        u.`UserCode`,
+        r.`roomTitle`,
+        l.`name` tripModeName
+        FROM `itrip_comment` c
+        LEFT JOIN `itrip_hotel` h ON c.`hotelId`=h.`id`
+        LEFT JOIN `itrip_hotel_order` o ON o.hotelId=h.`id` AND c.`orderId`=o.`id`
+        LEFT JOIN `itrip_hotel_room` r ON r.hotelId=h.`id` AND r.id=o.`roomId`
+        LEFT JOIN `itrip_user` u ON u.`id`=o.`userId`
+        LEFT JOIN `itrip_label_dic` l ON l.id=c.`tripMode`
+        WHERE h.id=#{commentVo.hotelId}
+        <if test="commentVo.isHavingImg!=-1 and commentVo.isHavingImg!=null">
+            and `isHavingImg`=#{commentVo.isHavingImg}
+        </if>
+        <if test="commentVo.isOk!=-1 and commentVo.isOk!=null">
+            and `isOk`=#{commentVo.isOk}
+        </if>
+    </select>
+    <insert id="insertH" parameterType="cn.itrip.beans.pojo.Comment" >
+        <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into itrip_comment (hotelId, productId,
+        orderId, productType, userId,
+        isHavingImg, positionScore, facilitiesScore,
+        serviceScore, hygieneScore, score,
+        tripMode, isOk, creationDate,
+        createdBy, modifyDate, modifiedBy,
+        content)
+        values ( #{hotelId,jdbcType=BIGINT}, #{productId,jdbcType=BIGINT},
+        #{orderId,jdbcType=BIGINT}, #{productType,jdbcType=INTEGER}, #{userId,jdbcType=BIGINT},
+        #{isHavingImg,jdbcType=INTEGER}, #{positionScore,jdbcType=INTEGER}, #{facilitiesScore,jdbcType=INTEGER},
+        #{serviceScore,jdbcType=INTEGER}, #{hygieneScore,jdbcType=INTEGER}, #{score,jdbcType=INTEGER},
+        #{tripMode,jdbcType=BIGINT}, #{isOk,jdbcType=INTEGER}, #{creationDate,jdbcType=TIMESTAMP},
+        #{createdBy,jdbcType=BIGINT}, #{modifyDate,jdbcType=TIMESTAMP}, #{modifiedBy,jdbcType=BIGINT},
+        #{content,jdbcType=LONGVARCHAR})
+    </insert>
+</mapper>

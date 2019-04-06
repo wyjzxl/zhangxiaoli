@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.itrip.mapper.PreOrderVoMapper">
+    <select id="getPreOrderVo" parameterType="cn.itrip.beans.pojo.OrderVo"  resultType="cn.itrip.beans.pojo.OrderVo">
+        SELECT
+            hotelName,
+            (SELECT roomPrice FROM itrip_hotel_room ihr WHERE ihr.hotelId = #{hotelId} AND ihr.id = #{roomId}) AS price
+
+        FROM itrip_hotel ih WHERE ih.id=#{hotelId}
+
+    </select>
+    <select id="getTempStore" parameterType="cn.itrip.beans.pojo.OrderVo" resultType="int">
+        SELECT MIN(store) FROM itrip_hotel_temp_store WHERE roomId = #{roomId} AND recordDate BETWEEN #{checkInDate} AND #{checkOutDate}
+    </select>
+</mapper>
