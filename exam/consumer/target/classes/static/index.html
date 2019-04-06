@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-1.12.4.min.js"></script>
+    <script>
+        function getMyDate(str){
+            var oDate = new Date(str),
+                oYear = oDate.getFullYear(),
+                oMonth = oDate.getMonth()+1,
+                oDay = oDate.getDate(),
+                oHour = oDate.getHours(),
+                oMin = oDate.getMinutes(),
+                oSen = oDate.getSeconds(),
+                oTime = oYear +'-'+ getzf(oMonth) +'-'+ getzf(oDay) +' '+ getzf(oHour) +':'+ getzf(oMin) +':'+getzf(oSen);//最后拼接时间
+            return oTime;
+        };
+        //补0操作
+        function getzf(num){
+            if(parseInt(num) < 10){
+                num = '0'+num;
+            }
+            return num;
+        }
+    </script>
+</head>
+<body>
+    <center>
+        <h1 >新闻列表</h1>
+        <table id="tb" border="1" cellspacing="0" cellpadding="0">
+            <tr >
+                <td><strong>新闻编号</strong></td>
+                <td><strong>新闻标题</strong></td>
+                <td><strong>新闻摘要</strong></td>
+                <td><strong>作者</strong></td>
+                <td><strong>创建时间</strong></td>
+                <td><strong>操作</strong></td>
+            </tr>
+        </table>
+    </center>
+</body>
+<script>
+    $(function () {
+        $.ajax({
+            url:"queryAll",
+            data:{},
+            dataType:"json",
+            type:"get",
+            success:function (msg) {
+                $(msg).each(function (i,e) {
+                    $("#tb").append("<tr>"+
+                        "<td>"+e.id+"</td>"+
+                        "<td>"+e.title+"</td>"+
+                        "<td>"+e.summary+"</td>"+
+                        "<td>"+e.author+"</td>"+
+                        "<td>"+getMyDate(e.createDate)+"</td>"+
+                        "<td>"+"<a href='addNew.html'>评论</a> "+"<a href='delete?id='+e.id>删除</a> "+"</td>"+
+                        "</tr>");
+                });
+            }
+        });
+    });
+</script>
+</html>

@@ -93,9 +93,11 @@ public class OOS
                             times[j]=time;
                             addresses[j]=address;
                             amount[j]=sumPrice+deliCharge;
+                            states[j]=0;
                             break;
                         }
                     }
+
                     if(!ia)
                     {
                         System.out.println("对不起，您的餐袋已满!");
@@ -114,8 +116,6 @@ public class OOS
                             String Money=amount[i]+"元";
                             System.out.println((i+1)+"\t\t"+ names[i]+"\t"+dishMegs[i]+"\t\t"+date_time+"\t\t"+addresses[i]+"\t\t"+ Money+"\t"+state);
                         }
-
-
                     }
                     break;
                 case 3:
@@ -178,6 +178,7 @@ public class OOS
                             break;
                         }
                     }
+
                     if(!idf)
                     {
                         System.out.println("您要删除的订单不存在!");
@@ -196,6 +197,12 @@ public class OOS
                     int hh=wyj.nextInt();
                     praiseNums[hh-1]++;
                     System.out.println("点赞成功!");
+                    for(int i=0;i<dishNames.length;i++)
+                    {
+                        String price=prices[i]+"元";
+                        String priaiseNum=(praiseNums[i])>0?praiseNums[i]+"赞":"";
+                        System.out.println((i+1)+"\t\t"+dishNames[i]+"\t"+price+"\t"+priaiseNum);
+                    }
                     break;
                 case 6:
                     System.out.println("***退出系统***");
@@ -226,5 +233,6 @@ public class OOS
                 break;
             }
         }while(num==0);
+
     }
 }
